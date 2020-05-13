@@ -1,5 +1,5 @@
 package com.example.myapplication;
 
 public class TestOne {
-    public static final String str = "123";
+    public static final String STR = "123";
 }
