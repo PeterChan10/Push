@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    defaultConfig {
+        applicationId "com.mc.mc"
+        minSdkVersion 17
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}
+
+// 调用MobTech SDK
+apply plugin: 'com.mob.sdk'
+MobSDK {
+    appKey "2f29d68e38cde"
+    appSecret "df644f912377b8c7764c72f6bd414302"
+
+    // 调用MobPush
+    MobPush {
+        badge true
+
+        //集成其他推送通道（可选）
+        devInfo {
+//            HUAWEI {
+//                appId "101645593"
+//            }
+
+            //小米推送配置信息
+//            XIAOMI{
+//                appId "2882303761518321497"
+//                appKey "5271832155497"
+//            }
+
+            //FCM推送通道配置
+            FCM{
+                //设置默认推送通知显示图标
+                iconRes "@mipmap/ic_launcher"
+            }
+
+            //魅族推送配置信息
+            MEIZU{
+                appId "130477"
+                appKey "6bb322cdb11c45b4802f530d6b0f0454"
+            }
+
+            }
+        }
+    }
+//apply plugin: 'com.google.gms.google-services'
+
+
